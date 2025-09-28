@@ -224,6 +224,9 @@
   <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
 
   <script>
+    /* ===========================
+       MAIN APP CODE
+    ============================ */
     const videoElement = document.getElementById('webcam');
     const canvasElement = document.getElementById('overlay');
     const canvasCtx = canvasElement.getContext('2d');
@@ -387,6 +390,17 @@
         }
       }
     }
+
+    /* ===========================
+       DISABLE RIGHT CLICK & DEV TOOLS
+    ============================ */
+    document.addEventListener('contextmenu', (e) => e.preventDefault());
+
+    document.onkeydown = function(e) {
+      if (e.keyCode === 123) return false; // F12
+      if (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67 || e.keyCode === 75)) return false; // Ctrl+Shift+I/J/C/K
+      if (e.ctrlKey && e.keyCode === 85) return false; // Ctrl+U
+    };
   </script>
 </body>
 </html>
